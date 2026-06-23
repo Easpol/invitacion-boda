@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuria y Raúl - 21 de noviembre de 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #5a6b4a;
+            --color-secondary: #e8b4b8;
+            --color-accent: #c97d85;
+            --color-cream: #f5f3ef;
+            --color-text: #3d3d3d;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--color-cream) 0%, #ffffff 100%);
+            color: var(--color-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pareja-flores.png');
+            background-size: 800px auto;
+            background-position: center 20%;
+            background-repeat: no-repeat;
+            opacity: 0.40;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .floral-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235a6b4a' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .date {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--color-accent);
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+            margin: 30px auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(90, 107, 74, 0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-style: italic;
+            color: var(--color-text);
+            line-height: 1.9;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .event-details {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .event-details h3 {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            color: var(--color-accent);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .event-details p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin: 8px 0;
+            color: var(--color-text);
+        }
+
+        .location {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .rsvp-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .rsvp-text {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .rsvp-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: 2px solid var(--color-primary);
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            background: white;
+            color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(90, 107, 74, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-style: italic;
+            color: var(--color-text);
+            font-size: 1.1rem;
+        }
+
+        .hearts {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin: 20px 0;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 30px 20px;
+                margin: 20px 10px;
+            }
+
+            .rsvp-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        .qr-section {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .qr-item {
+            text-align: center;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border: 2px solid var(--color-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            padding: 10px;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floral-pattern"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="names">Nuria y Raúl</h1>
+            <p class="date">21 de noviembre de 2026</p>
+            <div class="divider"></div>
+        </header>
+
+        <div class="card">
+            <p class="intro-text">
+                Hay momentos en la vida que merecen ser recordados para siempre;<br>
+                compartirlos con las personas que más queremos<br>
+                los convierte en inolvidables.<br><br>
+                Por eso, nos haría muy felices<br>
+                que formases parte<br>
+                de uno de los días más especiales de nuestra vida.
+            </p>
+            <p class="signature intro-text">Nuestra boda</p>
+        </div>
+
+        <div class="card">
+            <div class="intro-text">
+                <p><em>Sí... lo sabemos.</em></p>
+                <p>Quizás no os hemos dado muchisimo tiempo para pensar modelito.</p>
+                <p>Pero tranquilos, porque nuestros ya nos hemos encargado</p>
+                <p>de preparar una boda increible, una gran celebración,</p>
+                <p>y una fiesta a la altura de quienes nos acompañan.</p>
+                <p><strong>Ahora solo queda disfrutar.</strong></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Ceremonia Religiosa</h2>
+            <div class="divider"></div>
+            
+            <div class="event-details">
+                <p><strong>12,00 h</strong></p>
+                <p class="location">Parroquia de San Miguel Arcángel</p>
+                <p>Mola del Cuervo</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">Celebración</h2>
+            <div class="divider"></div>
+            
+            <div class="event-details">
+                <p class="location">Salones Mabel, Alcázar de San Juan</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="rsvp-section">
+                <h2 class="section-title">Confirmación de Asistencia</h2>
+                <div class="divider"></div>
+                
+                <p class="rsvp-text">
+                    Se ruega confirmación<br>
+                    antes del 21 de octubre de 2026
+                </p>
+
+                <div class="rsvp-buttons">
+                    <a href="#" class="btn" onclick="confirmarAsistencia(); return false;">
+                        ✓ Confirmo mi asistencia
+                    </a>
+                </div>
+
+                <div class="qr-section">
+                    <div class="qr-item">
+                        <div class="qr-placeholder">
+                            <span>Código QR para confirmar asistencia</span>
+                        </div>
+                        <p><small>Asistencia</small></p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 30px; font-size: 0.95rem; font-style: italic;">
+                    Completa el formulario para ayudarnos a hacerte sentir especial en nuestro gran día. ¡Gracias por tu colaboración!  
+                </p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="hearts">❤️ 💕 ❤️</div>
+            <p>¡Esperamos celebrar este día tan especial contigo!</p>
+        </footer>
+    </div>
+
+    <script>
+        function confirmarAsistencia() {
+            alert('¡Gracias por confirmar tu asistencia! 🎉\n\nPronto recibirás más información sobre el evento.\n\n(Aquí puedes integrar un formulario o enlace real para la confirmación)');
+            // Aquí puedes redirigir a un formulario de Google Forms, Typeform, o tu propio sistema
+            // window.location.href = 'TU_ENLACE_DE_FORMULARIO';
+        }
+
+        function confirmarAusencia() {
+            alert('Lamentamos que no puedas acompañarnos.\n\nGracias por hacérnoslo saber.\n\n(Aquí puedes integrar un formulario o enlace real para la confirmación)');
+            // Aquí puedes redirigir a un formulario
+            // window.location.href = 'TU_ENLACE_DE_FORMULARIO';
+        }
+
+        // Animación suave al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
