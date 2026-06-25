@@ -17,7 +17,7 @@
         :root {
             --color-primary: #5a6b4a;
             --color-secondary: #e8b4b8;
-            --color-accent: #c97d85;
+            --color-accent: #c97d7d;
             --color-cream: #f5f3ef;
             --color-text: #3d3d3d;
         }
@@ -361,6 +361,9 @@
                     <a href="#" class="btn" onclick="confirmarAsistencia(); return false;">
                         ✓ Confirmo mi asistencia
                     </a>
+                        <a href="#" class="btn" onclick="confirmarAusencia(); return false;">
+                        ✓ No podré asistir
+                    </a>
                 </div>
 
                 <p style="margin-top: 30px; font-size: 0.95rem; font-style: italic;">
@@ -377,15 +380,15 @@
 
     <script>
         function confirmarAsistencia() {
-            alert('¡Gracias por confirmar tu asistencia! 🎉\n\nPronto recibirás más información sobre el evento.\n\n(Aquí puedes integrar un formulario o enlace real para la confirmación)');
+            // alert('¡Gracias por confirmar tu asistencia! 🎉\n\nPronto recibirás más información sobre el evento.\n\n(Aquí puedes integrar un formulario o enlace real para la confirmación)');
             // Aquí puedes redirigir a un formulario de Google Forms, Typeform, o tu propio sistema
-            window.location.href = 'https://easpol.github.io/confirmacion_boda/';
+            window.location.href = 'confirmacion-asistencia.html';
         }
 
         function confirmarAusencia() {
-            alert('Lamentamos que no puedas acompañarnos.\n\nGracias por hacérnoslo saber.\n\n(Aquí puedes integrar un formulario o enlace real para la confirmación)');
+            //alert('Lamentamos que no puedas acompañarnos.\n\nGracias por hacérnoslo saber.\n\n(Aquí puedes integrar un formulario o enlace real para la confirmación)');
             // Aquí puedes redirigir a un formulario
-            // window.location.href = 'tengo que crearlo';
+            window.location.href = 'confirmacion-ausencia.html';
         }
 
         // Animación suave al hacer scroll

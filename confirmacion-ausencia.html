@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Ausencia - Nuria y Raúl</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #5a6b4a;
+            --color-secondary: #e8b4b8;
+            --color-accent: #c97d7d;
+            --color-cream: #f5f3ef;
+            --color-text: #3d3d3d;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--color-cream) 0%, #ffffff 100%);
+            color: var(--color-text);
+            line-height: 1.8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: clamp(2rem, 5vw, 4rem);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--color-secondary);
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: #4a5a3a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(90, 107, 74, 0.3);
+        }
+
+        .btn-back {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            color: var(--color-primary);
+        }
+
+        .message {
+            text-align: center;
+            color: var(--color-text);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lamentamos tu ausencia</h1>
+        <p class="subtitle">Nuria y Raúl</p>
+        
+        <p class="message">
+            Entendemos que no puedas acompañarnos en este día tan especial. 
+            Nos encantaría conocer el motivo para mantener el contacto.
+        </p>
+
+        <form id="ausenciaForm" onsubmit="enviarAusencia(event)">
+            <div class="form-group">
+                <label for="nombre">Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje (opcional)</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Si deseas dejarnos algún mensaje..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Confirmar Ausencia</button>
+        </form>
+
+        <a href="index.html" class="btn-back">← Volver a la invitación</a>
+    </div>
+
+    <script>
+        function enviarAusencia(event) {
+            event.preventDefault();
+            
+            // Aquí puedes integrar tu backend o servicio de formularios
+            // Por ejemplo: Google Forms, Formspree, EmailJS, etc.
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                mensaje: document.getElementById('mensaje').value
+            };
+
+            console.log('Datos de ausencia:', formData);
+            
+            // Mensaje de confirmación temporal
+            alert('Gracias por hacérnoslo saber, ' + formData.nombre + '.\n\n¡Esperamos verte en otra ocasión!');
+            
+            // Opcional: Redirigir de vuelta a la invitación
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
